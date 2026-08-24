@@ -25,7 +25,9 @@ SECRET_KEY = 'django-insecure-a1%h&yoca_w(6#19nyz)t*h#(@v$y0pesfnh4ewd%f*w-q7!31
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+    "thowind.pythonanywhere.com",
+]
 
 INTERNAL_IPS = [
     "127.0.0.1",
