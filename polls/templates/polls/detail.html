@@ -1,6 +1,6 @@
 {% load static %}
 <!DOCTYPE html>
-<html lang="en">
+<html lang="de">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,18 +8,31 @@
     <link rel="stylesheet" href="{% static 'polls/style.css' %}">
 </head>
 <body>
+<div class="page-shell">
+<header class="site-header">
+    <a class="brand" href="{% url 'polls:index' %}">Polls</a>
+    <span class="header-mark" aria-hidden="true"></span>
+</header>
+<main>
+<p class="eyebrow">Deine Stimme</p>
+<section class="poll-panel">
 <form action="{% url 'polls:vote' question.id %}" method="post">
 {% csrf_token %}
 <fieldset>
     <legend><h1>{{ question.question_text }}</h1></legend>
-    {% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
+    {% if error_message %}<p class="error"><strong>{{ error_message }}</strong></p>{% endif %}
     {% for choice in question.choice_set.all %}
-        <input type="radio" name="choice" id="choice{{ forloop.counter }}" value="{{ choice.id }}">
-        <label for="choice{{ forloop.counter }}">{{ choice.choice_text }}</label><br>
+        <label class="choice" for="choice{{ forloop.counter }}">
+            <input type="radio" name="choice" id="choice{{ forloop.counter }}" value="{{ choice.id }}">
+            <span>{{ choice.choice_text }}</span>
+        </label>
     {% endfor %}
 </fieldset>
-<input type="submit" value="Vote">
+<button class="button" type="submit">Stimme abgeben</button>
 </form>
-<a class="home-button" href="{% url 'polls:index' %}">Zur Startseite</a>
+</section>
+<a class="home-button" href="{% url 'polls:index' %}">Zur Übersicht</a>
+</main>
+</div>
 </body>
 </html>

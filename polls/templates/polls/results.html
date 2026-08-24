@@ -1,6 +1,6 @@
 {% load static %}
 <!DOCTYPE html>
-<html lang="en">
+<html lang="de">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,15 +8,24 @@
     <link rel="stylesheet" href="{% static 'polls/style.css' %}">
 </head>
 <body>
+<div class="page-shell">
+<header class="site-header">
+    <a class="brand" href="{% url 'polls:index' %}">Polls</a>
+    <span class="header-mark" aria-hidden="true"></span>
+</header>
+<main>
+<p class="eyebrow">Ergebnis</p>
 <h1>{{ question.question_text }}</h1>
 
-<ul>
+<ul class="results-list">
 {% for choice in question.choice_set.all %}
-    <li>{{ choice.choice_text }} -- {{ choice.votes }} vote{{ choice.votes|pluralize }}</li>
+    <li class="poll-card"><strong>{{ choice.choice_text }}</strong><br>{{ choice.votes }} Stimme{{ choice.votes|pluralize:"n" }}</li>
 {% endfor %}
 </ul>
 
-<a href="{% url 'polls:detail' question.id %}">Vote again?</a>
-<a class="home-button" href="{% url 'polls:index' %}">Zur Startseite</a>
+<a class="secondary-link" href="{% url 'polls:detail' question.id %}">Noch einmal abstimmen</a>
+<a class="home-button" href="{% url 'polls:index' %}">Zur Übersicht</a>
+</main>
+</div>
 </body>
 </html>

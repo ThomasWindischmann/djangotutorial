@@ -1,6 +1,6 @@
 {% load static %}
 <!DOCTYPE html>
-<html lang="en">
+<html lang="de">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,16 +8,28 @@
     <link rel="stylesheet" href="{% static 'polls/style.css' %}">
 </head>
 <body>
+<div class="page-shell">
+<header class="site-header">
+    <a class="brand" href="{% url 'polls:index' %}">Polls</a>
+    <span class="header-mark" aria-hidden="true"></span>
+</header>
+
+<main>
+<p class="eyebrow">Deine Meinung zählt</p>
+<h1>Welche Frage bewegt dich?</h1>
+<p class="intro">Wähle eine Umfrage aus und gib deine Stimme ab.</p>
+<p class="eyebrow">Aktive Umfragen</p>
 
 {% if latest_question_list %}
-    <ul>
+    <ul class="poll-list">
     {% for question in latest_question_list %}
-        <li><a href="{% url 'polls:detail' question.id %}">{{ question.question_text }}    
-        </a></li>
+        <li class="poll-card"><a href="{% url 'polls:detail' question.id %}">{{ question.question_text }}</a></li>
     {% endfor %}
     </ul>
 {% else %}
-    <p>No polls are available.</p>
+    <p class="empty-state">Aktuell sind keine Umfragen verfügbar.</p>
 {% endif %}
+</main>
+</div>
 </body>
 </html>
