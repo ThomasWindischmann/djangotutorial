@@ -15,10 +15,15 @@
 </header>
 
 <main>
-<p class="eyebrow">Deine Meinung zählt</p>
-<h1>Welche Frage bewegt dich?</h1>
+<div class="hero-row">
+    <div class="hero-copy">
+        <p class="eyebrow">Deine Meinung zählt</p>
+        <h1>Welche Frage bewegt dich?</h1>
+    </div>
+    <img class="header-art" src="{% static 'polls/images/pinguin.png' %}" alt="Pinguin-Illustration">
+</div>
 <p class="intro">Wähle eine Umfrage aus und gib deine Stimme ab.</p>
-<p class="eyebrow">Aktive Umfragen</p>
+<div class="section-label"><p class="eyebrow">Aktive Umfragen</p><span class="section-line"></span></div>
 
 {% if latest_question_list %}
     <ul class="poll-list">

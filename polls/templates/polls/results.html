@@ -16,6 +16,7 @@
 <main>
 <p class="eyebrow">Ergebnis</p>
 <h1>{{ question.question_text }}</h1>
+<img class="poll-illustration" src="{% static 'polls/images/pinguin.png' %}" alt="Pinguin-Illustration">
 
 <ul class="results-list">
 {% for choice in question.choice_set.all %}

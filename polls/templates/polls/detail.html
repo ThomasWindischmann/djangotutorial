@@ -16,6 +16,7 @@
 <main>
 <p class="eyebrow">Deine Stimme</p>
 <section class="poll-panel">
+<img class="poll-illustration" src="{% static 'polls/images/pinguin.png' %}" alt="Pinguin-Illustration">
 <form action="{% url 'polls:vote' question.id %}" method="post">
 {% csrf_token %}
 <fieldset>
